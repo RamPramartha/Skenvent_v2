@@ -1,0 +1,347 @@
+@import "vars";
+@import "mixins";
+@import "templates";
+
+// library
+@import "simptip";
+
+*,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+
+  body {
+    display: block;
+    @include setSize($dimens__width--full, $dimens__height--full);
+
+    #wrapper {
+      display: block;
+      margin: auto;
+      @include setSize($dimens__width--full, fit-content);
+    }
+  }
+}
+
+.block {
+  position: relative;
+  @include setSize($dimens__width--full, 100vh);
+
+  .card {
+    position: relative;
+    @include setSize(90%, fit-content);
+    margin: auto;
+
+    &__title {
+      @include setSize(35%, fit-content);
+      margin: auto !important;
+      padding-top: 5% !important;
+
+      h1 {
+        font-family: $font__muli;
+        color: $color__dark;
+        font-size: 28pt;
+        font-weight: bold;
+      }
+
+      p {
+        font-family: $font__muli;
+        font-weight: 300;
+        color: $color__subtitle;
+        margin-top: 10px;
+      }
+    }
+
+    form {
+      @include setFlex(column, space-between, center);
+    }
+
+    &__button {
+      margin-top: 30px;
+
+      button {
+        position: relative;
+      }
+
+      button:disabled {
+        background: linear-gradient(to right, rgba(white, 0.3), rgba(white, 0.3)),
+          $color__blue !important;
+        cursor: no-drop;
+
+        &:hover {
+          background: linear-gradient(to right, rgba(white, 0.3), rgba(white, 0.3)),
+            $color__blue !important;
+        }
+      }
+    }
+
+    &__subheading {
+      margin-top: 3%;
+      font-family: $font__muli;
+      @include setSize(50%, fit-content);
+      margin-bottom: -15px !important;
+    }
+
+    &__body {
+      margin-top: 1.5rem;
+      @include setFlex(row, center, flex-start);
+      flex-wrap: wrap;
+      @include setSize($dimens__width--full, fit-content);
+
+      &--start {
+        margin-left: -115px !important;
+        // @include setFlex(row, flex-start, flex-start);
+      }
+
+      input[type="radio"] {
+        @include setEqualSize(0);
+      }
+
+      .chip {
+        @include setFlex(row, space-between, center);
+        @include setSize(fit-content, 60px);
+        border-radius: 4px;
+        border: 1px solid rgba($color__lightgray, 1);
+        padding: 1rem 1.3rem;
+        @include setTransition(.2s, border);
+        box-shadow: 0px 0px 10px rgba($color__lightgray, 1);
+        cursor: pointer;
+        margin: 10px 7px;
+
+        &.--checked {
+          border: 1px solid $color__blue;
+          color: $color__blue;
+          font-weight: bold;
+
+          .chip__title {
+            margin-right: 13px;
+          }
+
+          .chip__icon {
+            display: block;
+          }
+        }
+
+        &.--index {
+          border: 1px solid $color__blue;
+          color: $color__blue;
+          font-weight: bold;
+
+          .chip__title {
+            margin-right: 13px;
+          }
+
+          .chip__icon {
+            display: block;
+          }
+        }
+
+        &__title {
+          font-family: $font__muli;
+        }
+
+        &__icon {
+          display: none;
+          color: $color__blue;
+          font-size: 15pt !important;
+          @include setTransition(.3s, opacity, width, display);
+          padding-top: 3px;
+        }
+      }
+    }
+  }
+
+  .jumbotron {
+    @include setAbs(50%, 50%) {
+      transform: translate(-50%, -50%);
+    }
+
+    @include setSize(30%, 80vh);
+
+    &__title {
+      @include setAbs(0%, 0%);
+
+      h1 {
+        font-family: $font__muli;
+        font-weight: bold;
+        font-size: 28pt;
+      }
+
+      p {
+        font-family: $font__muli;
+        font-weight: 300;
+        color: $color__subtitle;
+        margin-top: 10px;
+      }
+    }
+
+    &__card {
+      @include setAbs(25%, 0%);
+      @include setSize($dimens__width--full, 55vh);
+
+      .form {
+        position: relative;
+        @include setSize($dimens__width--full, $dimens__height--full);
+
+        &__pincode {
+          @include setSize($dimens__width--full, 60px);
+          @include setFlex(row, center, flex-start);
+
+          input {
+            position: relative;
+            @include clearInput();
+            text-align: center;
+            border-bottom: 2px solid $color__lightgray;
+            margin: 0px 10px;
+            font-family: $font__muli;
+            font-size: 30pt;
+            padding: .6rem;
+            @include setTransition(.2s, border);
+
+            &:focus {
+              border-color: $color__dark;
+            }
+          }
+        }
+
+        &__fullname {
+          text-transform: capitalize !important;
+        }
+
+        &__submit {
+          @include setAbs(null, null, 0%, 0%);
+          @include setSize($dimens__width--full, fit-content);
+          @include setFlex(row, flex-end, center);
+
+          button:disabled {
+            background: linear-gradient(to right, rgba(white, 0.3), rgba(white, 0.3)),
+              $color__blue !important;
+            cursor: no-drop;
+
+            &:hover {
+              background: linear-gradient(to right, rgba(white, 0.3), rgba(white, 0.3)),
+                $color__blue !important;
+            }
+          }
+        }
+
+        &__group {
+          cursor: pointer;
+          @include setFlex(row, flex-start, center);
+          width: $dimens__width--full;
+          height: 60px;
+          box-sizing: border-box;
+          background: $color__lightgray;
+          @include setTransition(.1s, height, background);
+          border: 1px solid rgba($color__lightgray, 1);
+
+          &--active {
+            background: white;
+          }
+
+          &--expand {
+            height: 80px;
+          }
+
+          &--inform {
+            i {
+              color: $color__dark !important;
+            }
+          }
+
+          &--icon {
+            @include setEqualSize(65px);
+            @include setFlex(row, center, center);
+
+            &>i {
+              font-size: 16pt;
+              color: rgba($color__dark, .7);
+            }
+          }
+
+          &--fields {
+            @include setFlex(column);
+            @include setSize(73%, fit-content);
+
+            label {
+              @include setSize($dimens__width--full, fit-content);
+              font-family: $font__muli;
+              font-size: 9.5pt;
+              font-weight: 500;
+              cursor: pointer;
+            }
+
+            input {
+              @include clearInput();
+              width: $dimens__width--full;
+              height: 0px;
+              padding-top: 0;
+              color: $color__dark;
+              font-weight: bold;
+              font-family: $font__muli;
+              font-size: 11pt;
+              @include setTransition(.2s, height, padding);
+
+              &.--active {
+                height: 20px;
+                padding-top: 2px;
+              }
+            }
+
+            small.err {
+              color: $color__red;
+              font-family: $font__muli;
+              font-weight: bold;
+              font-size: 9pt;
+              padding-top: 2px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.btn {
+  outline: none;
+  border: none;
+  background: none;
+  text-decoration: none;
+  padding: .8rem 1.4rem;
+  color: $color__dark;
+  font-family: $font__muli;
+  font-weight: bold;
+  letter-spacing: .5px;
+  font-size: 11pt;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  @include setTransition(.1s, background);
+
+  &__primary {
+    @include scheme(primary);
+
+    &:hover {
+      background: rgba($color__blue, .9) !important;
+    }
+  }
+
+  &__secondary {
+    @include scheme(secondary);
+
+    &:hover {
+      background: rgba($color__dark, .03) !important;
+    }
+  }
+}
+
+.flex {
+  &__start {
+    @include setFlex(row, flex-start, flex-start);
+  }
+}
+
+.admin__bg {
+  background: #F8F9FB !important;
+}
