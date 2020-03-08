@@ -17,7 +17,7 @@ if (!function_exists("loadfile")) {
         if (!is_dir($_dir_file)) {
           if ($_filename == $_dir_file) {
             $_filename = $dir . $_filename;
-            include $_filename;
+            include_once $_filename;
           }
         }
       }

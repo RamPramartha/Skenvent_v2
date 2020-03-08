@@ -295,7 +295,7 @@ class FormValidation
 
     $err_msg = $err_lists[$err_code];
 
-    // set session 
+    // set session
     $_SESSION["err"][strtolower($err_name)][] = $err_msg;
   }
 
@@ -325,7 +325,7 @@ function showError($err_name)
   if (is_array($err)) {
     $err = $err[0];
 
-    echo "<small class=\"err\">{$err}</small>";
+    echo $err;
     unset($_SESSION["err"][$err_name]);
 
     // foreach ($err as $err_) {

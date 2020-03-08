@@ -50,7 +50,7 @@
       <!-- end input -->
 
       <div class="form__submit">
-        <a href="register.html" class="btn btn__secondary simptip-position-left simptip-smooth" data-tooltip="Belum memiliki akun? Mari buat satu. 🏃‍♀️">Mari Buat Akun</a>
+        <a href="<?= base_url("/auth/register"); ?>" class="btn btn__secondary simptip-position-left simptip-smooth" data-tooltip="Belum memiliki akun? Mari buat satu. 🏃‍♀️">Mari Buat Akun</a>
         <button type="submit" class="btn btn__primary simptip-position-right simptip-smooth" data-tooltip="Masukkan aku tolong! 👉">
           Lanjutkan
         </button>

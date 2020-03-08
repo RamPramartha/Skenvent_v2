@@ -96,9 +96,12 @@ class DB
 
       $column = "";
       foreach ($data as $key => $val) {
-        $column         .=  "{$key}=:$key";
+        $column         .=  "{$key}=:$key, ";
         $to_bind[$key]  =   $val;
       }
+
+      $column   =   rtrim($column);
+      $column   =   rtrim($column, ",");
 
       $where_q = " WHERE ";
       foreach ($where as $key => $val) {
@@ -111,7 +114,6 @@ class DB
       $where_q = rtrim($where_q);
 
       $sql .= $column . $where_q;
-
       $this->dbh->pQ($sql);
 
       foreach ($to_bind as $bind_key => $bind_val) {

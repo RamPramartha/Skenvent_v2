@@ -84,6 +84,6 @@ class DBWrapper
 
   public function getDBName()
   {
-    return $this->dbHost;
+    return $this->dbName  ;
   }
 }

@@ -6,6 +6,7 @@
 
 if (!session_status() || !session_id()) session_start();
 
+
 define("BASEPATH", "Skenvent");
 define("DS", DIRECTORY_SEPARATOR);
 define("ROOT", strtr(rtrim(getcwd(), "/\\"), "/\\", DS . DS));
