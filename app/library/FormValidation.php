@@ -120,9 +120,8 @@ class FormValidation
     if (in_array(false, $cond)) {
       $this->redirect(currpath());
     } else {
-      // if no error detected then unset the err and saved value
+      // if no error detected then unset error 
       unset($_SESSION["err"]);
-      unset($_SESSION["saved_value"]);
     }
   }
 

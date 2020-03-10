@@ -170,6 +170,19 @@ class DB
   {
     $val = $val ?? "*";
 
+    if (is_array($val)) {
+      $_exp_val = "";
+      // expected val = username, email, password
+      foreach ($val as $key) {
+        $_exp_val .= "{$key}, ";
+      }
+
+      $_exp_val = rtrim($_exp_val);
+      $_exp_val = rtrim($_exp_val, ",");
+    } else {
+      $_exp_val = $val;
+    }
+
     $where_q = "";
     if (is_array($this->where) && is_array($this->where_val)) {
       foreach ($this->where as $key => $val) {
@@ -180,7 +193,7 @@ class DB
       $where_q = rtrim($where_q, "AND");
 
       $sql =
-        "SELECT {$val} FROM " . self::$table . " WHERE {$where_q}";
+        "SELECT {$_exp_val} FROM " . self::$table . " WHERE {$where_q}";
       $this->dbh->pQ($sql);
 
       for ($i = 0; $i < count($this->where_val); $i++) {
@@ -188,7 +201,7 @@ class DB
       }
     } else {
       $sql =
-        "SELECT {$val} FROM " . self::$table . " WHERE {$this->where}=:query";
+        "SELECT {$_exp_val} FROM " . self::$table . " WHERE {$this->where}=:query";
       $this->dbh->pQ($sql);
       $this->dbh->bind("query", $this->where_val);
     }

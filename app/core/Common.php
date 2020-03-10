@@ -165,3 +165,48 @@ if (!function_exists("redirect")) {
     }
   }
 }
+
+
+if (!function_exists("setSession")) {
+  function setSession($_sessdata = null)
+  {
+    if (!session_status() || !session_id()) session_start();
+
+    $_sessdata = $_sessdata ?? die("Your session data can't be empty.");
+
+    if (is_array($_sessdata)) {
+      foreach ($_sessdata as $_sessname => $_sessval) {
+        $_SESSION[$_sessname] = $_sessval;
+      }
+    } else {
+      die("Illegal type for setting session. Expected array!");
+    }
+  }
+}
+
+if (!function_exists("setCookies")) {
+  function setCookies($_cookiedata = null, $time = 3600, $path = "/")
+  {
+    if (!session_status() || !session_id()) session_start();
+    $_cookiedata = $_cookiedata ?? die("Your data can't leave empty.");
+
+
+
+    if (is_array($_cookiedata)) {
+      foreach ($_cookiedata as $_cn => $_cv) {
+        setcookie($_cn, $_cv, time() + $time, $path);
+      }
+    } else {
+      die("Illegal type for setting cookie. Expected array!");
+    }
+  }
+}
+
+if (!function_exists("sessUnset")) {
+  function sessUnset()
+  {
+    session_destroy();
+    session_unset();
+    $_SESSION = [];
+  }
+}

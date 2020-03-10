@@ -6,19 +6,19 @@
     </p>
   </div>
   <div class="jumbotron__card">
-    <form action="" method="POST" class="form">
+    <form action="<?= currpath(); ?>" method="POST" class="form">
       <!-- input email -->
-      <div class="form__group">
+      <div class="form__group <?= isError("verifyuser"); ?>">
         <div class="form__group--icon">
           <i class="far fa-fw fa-envelope"></i>
         </div>
         <div class="form__group--fields">
-          <label for="verifyUser">Email atau Username</label>
-          <input type="text" name="verifyUser" id="verifyUser" autocomplete="off" />
-          <small class="err"></small>
+          <label for="verifyUser">Email atau NISN</label>
+          <input type="text" name="verifyUser" id="verifyUser" autocomplete="off" value="<?= getValue("verifyuser"); ?>" />
+          <small class="err"><?= showError("verifyuser"); ?></small>
         </div>
         <div class="form__group--inform">
-          <span class="simptip-position-right simptip-smooth simptip-fade err-email" data-tooltip="err disini">
+          <span class="err-email">
             <i class="fas fa-fw fa-exclamation-triangle"></i>
           </span>
           <span class="simptip-position-right simptip-smooth simptip-fade info-email" data-tooltip="Kamu bisa masuk menggunakan email ataupun username loh.">
@@ -29,17 +29,17 @@
       <!-- end input -->
 
       <!-- input password -->
-      <div class="form__group">
+      <div class="form__group <?= isError("password"); ?>">
         <div class="form__group--icon">
           <i class="fas fa-fw fa-fingerprint"></i>
         </div>
         <div class="form__group--fields">
           <label for="password">Passwordmu disini</label>
           <input type="password" name="password" id="password" autocomplete="off" />
-          <small class="err"></small>
+          <small class="err"><?= showError("password"); ?></small>
         </div>
         <div class="form__group--inform">
-          <span class="simptip-position-right simptip-smooth simptip-fade err-password" data-tooltip="err disini">
+          <span class="err-password">
             <i class="fas fa-fw fa-exclamation-triangle"></i>
           </span>
           <span class="simptip-position-right simptip-smooth simptip-fade info-password" data-tooltip="Masukkan password mu dengan benar! 😉">

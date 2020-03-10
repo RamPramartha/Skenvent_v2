@@ -34,6 +34,11 @@ $(() => {
   });
 
   $(".form__group--fields input").each((index, elem) => {
+    if (elem.value !== "") {
+      elem.classList.add("--active");
+    } else {
+      elem.classList.remove("--active");
+    }
     if (elem.parentElement.parentElement.classList.contains("--invalid")) {
       let parent = elem.parentElement.parentElement;
       let err = elem.nextElementSibling;
