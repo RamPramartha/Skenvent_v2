@@ -27,8 +27,8 @@ class Auth
 
         $verifyed = $this->input->post("verifyUser");
 
-        $sql = "SELECT id_user, username, password FROM tb_siswa WHERE email={$verifyed} OR nisn={$verifyed}";
-        if ($userdata = DB::table("tb_siswa")->withQuery($sql, "single")) {
+        $sql = "SELECT id_user, username, password FROM tb_siswa WHERE email='{$verifyed}' OR nisn='{$verifyed}'";
+        if ($userdata = DB::withQuery($sql, "single")) {
           // check password
           if (password_verify($this->input->post("password"), $userdata["password"])) {
             $cookiedata = [
@@ -37,6 +37,11 @@ class Auth
             ];
 
             setCookies($cookiedata, 7200);
+
+            $role = explode( "-", $userdata["id_user"] )[0];
+            if( $role === "u" ) {
+              redirect( base_url( "/user" ) );
+            }
           }
         } else {
           $_SESSION["err"]["verifyuser"][] = "Hey nisn atau emailmu tidak ada dalam daftar.";
@@ -44,7 +49,12 @@ class Auth
         }
       }
     } else {
-      redirect(null, FORBIDDEN_ERROR);
+      $role = explode( "-", $_COOKIE["userid"] )[0];
+      if( $role === "u" ) {
+        redirect( base_url( "/user" ) );
+      } else {
+        redirect( null, FORBIDDEN_ERROR );
+      }
     }
   }
   public function register()
@@ -102,6 +112,7 @@ class Auth
 
           // unset the saved value before redirecting
           unset($_SESSION["saved_value"]);
+          sessUnset( ["saved_value"] );
           redirect(base_url("/auth/register2"));
         }
       }
@@ -133,7 +144,7 @@ class Auth
           setSession($sessdata);
 
           // unset saved value before redirecting
-          unset($_SESSION["saved_value"]);
+          sessUnset( ["saved_value"] );
           redirect(base_url("/auth/register3"));
         }
       }
@@ -160,7 +171,7 @@ class Auth
           setSession($sessdata);
 
           // unset saved value before redirecting
-          unset($_SESSION["saved_value"]);
+          sessUnset( ["saved_value"] );
           redirect(base_url("/auth/register4"));
         }
       }
@@ -182,7 +193,7 @@ class Auth
         setSession($sessdata);
 
         // unset saved value before redirecting
-        unset($_SESSION["saved_value"]);
+        sessUnset( ["saved_value"] );
         redirect(base_url("/auth/register5"));
       }
     } else {
@@ -217,10 +228,14 @@ class Auth
             "userid" => $_SESSION["userid"]
           ];
           setCookies($cookiedata, 7200);
-          unset($_SESSION["userid"]);
-          unset($_SESSION["username"]);
-          unset($_SESSION["kelas"]);
-          unset($_SESSION["jurusan"]);
+
+          
+          // redirecting
+          $role = explode( "-", $_SESSION["userid"] );
+          if( $role[0] === "u" ) {
+            sessUnset( ["userid", "username", "kelas", "jurusan"] );
+            redirect( base_url("/user") );
+          }
         }
       }
     } else {

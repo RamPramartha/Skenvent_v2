@@ -52,18 +52,6 @@ if (!function_exists("useAJAX")) {
 }
 
 
-if (!function_exists("useEnv")) {
-  function useEnv($name)
-  {
-    if (!isset($name))
-      die("Environment file not found.");
-
-    $res = $_ENV[$name] ?? null;
-
-    return $res;
-  }
-}
-
 
 if (!function_exists("useEnv")) {
   function useEnv($name)
@@ -202,8 +190,27 @@ if (!function_exists("setCookies")) {
   }
 }
 
+if (!function_exists("unsetCookies")) {
+  function unsetCookies( $cookieName ) 
+  {
+    foreach( $cookieName as $cn ) {
+      if( isset( $_COOKIE[$cn] ) ) {
+        setcookie($cn, "", time() - 7200, "/");
+      }
+    }
+  }
+} 
 if (!function_exists("sessUnset")) {
-  function sessUnset()
+  function sessUnset($sessName)
+  {
+    foreach( $sessName as $sn ) {
+      unset( $_SESSION[$sn] );
+    }
+  }
+}
+
+if (!function_exists("sessDestroy")) {
+  function sessDestroy()
   {
     session_destroy();
     session_unset();
