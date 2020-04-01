@@ -6,9 +6,9 @@ class Dotenv
   {
     $url = $url ?? die("Can't be empty.");
 
-    if (!file_exists($url . DS . ".env")) die("File environment not found");
+    if (!file_exists($url . DIRECTORY_SEPARATOR . ".env")) die("File environment not found");
 
-    $_env_dir = fopen($url . DS . ".env", "r");
+    $_env_dir = fopen($url . DIRECTORY_SEPARATOR . ".env", "r");
 
     while ($_lines = fgets($_env_dir)) {
       $_lines = trim($_lines);

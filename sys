@@ -1,0 +1,6 @@
+<?php 
+
+$command = $argv;
+
+include_once "./app/core/CLI.php";
+$cli = new CLI($command);
