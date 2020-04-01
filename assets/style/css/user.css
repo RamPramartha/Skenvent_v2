@@ -2,6 +2,10 @@
   align-items: center !important;
 }
 
-.is-fluid{
+.is-fluid {
   margin-top: 5px;
+}
+
+#content {
+  margin-top: 40px !important;
 }

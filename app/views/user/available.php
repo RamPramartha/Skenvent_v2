@@ -1,6 +1,6 @@
 <div class="container">
 
-<div class="columns">
+<div class="columns" id="content">
 <?php foreach ($items as $item) { ?>
 
 <div class="columns is-one-quarter">

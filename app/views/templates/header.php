@@ -8,7 +8,7 @@
   <script src="https://kit.fontawesome.com/08d9667f06.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.1/css/bulma.css" integrity="sha256-uByAjQgKh5//Z/gDvbL7MWsDcbwX7d/KizVil6On1dQ=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://unpkg.com/microtip/microtip.css" />
-  <link rel="stylesheet" href="<?= base_url( "/assets/css/user.css" ); ?>">
+  <link rel="stylesheet" href="<?= base_url(); ?>/assets/style/css/user.css">
 </head>
 <body>
 <nav class="navbar" style="padding: .3rem 0rem; box-shadow: 0px 3px 15px rgba(0,0,0,.08)" role="navigation" aria-label="main navigation">
