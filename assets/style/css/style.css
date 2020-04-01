@@ -22,6 +22,26 @@
   margin-left: 50 !important;
 }
 
+.mt-1 {
+  margin-top: 10 !important;
+}
+
+.mt-2 {
+  margin-top: 20 !important;
+}
+
+.mt-3 {
+  margin-top: 30 !important;
+}
+
+.mt-4 {
+  margin-top: 40 !important;
+}
+
+.mt-5 {
+  margin-top: 50 !important;
+}
+
 .p-0 {
   padding: 0 !important;
 }
@@ -41,7 +61,7 @@
   padding-bottom: 0 !important;
 }
 
-.pl-0,
+.pt-0,
 .px-0 {
   padding-left: 0 !important;
 }

@@ -100,6 +100,8 @@ ALTER TABLE `tb_siswa`
 -- AUTO_INCREMENT for table `tb_barang`
 --
 ALTER TABLE `tb_barang`
+  ADD PRIMARY KEY (`id_barang`);
+ALTER TABLE `tb_barang`
   MODIFY `id_barang` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
