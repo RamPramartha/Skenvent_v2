@@ -1,3 +1,7 @@
 .username {
   align-items: center !important;
 }
+
+.is-fluid{
+  margin-top: 5px;
+}
