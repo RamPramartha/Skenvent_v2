@@ -1,7 +1,6 @@
 <div class="container">
 
-<p style="margin-top:2em;"></p>
-<div class="columns">
+<div class="columns mt-1">
 <?php foreach ($items as $item) { ?>
 
 <div class="columns is-one-quarter">
