@@ -1,10 +1,6 @@
 <div class="container">
 
-<<<<<<< HEAD
-<div class="columns" id="content">
-=======
 <div class="columns mt-1">
->>>>>>> e291f868be27a66ed3ee2d087521b57c7c23e8fd
 <?php foreach ($items as $item) { ?>
 
 <div class="columns is-one-quarter">
