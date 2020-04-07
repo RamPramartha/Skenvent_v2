@@ -1,10 +1,9 @@
 <div class="container">
 
-<div class="columns">
 
-<div class="columns mt-1">
+<div class="columns mt-1 is-multiline is-desktop">
 <?php foreach ($items as $item) { ?>
-  <div class="card column" >
+  <div class="card column is-one-quarter mt-1" >
     <header class="card-header">
       <p class="card-header-title">
         <?= $item["nama"] ?>
@@ -25,6 +24,5 @@
 
 
 
-</div>
 </div>
 
