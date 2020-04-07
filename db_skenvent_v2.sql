@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2020 at 02:45 AM
+-- Generation Time: Apr 07, 2020 at 02:45 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_skenvent`
+-- Database: `db_skenvent_v2`
 --
 
 -- --------------------------------------------------------
@@ -43,7 +43,39 @@ CREATE TABLE `tb_barang` (
 --
 
 INSERT INTO `tb_barang` (`id_barang`, `nama`, `kode`, `qty`, `available_qty`, `id_jurusan`, `deskripsi`) VALUES
-(1, 'Laptop Acer e-575G series', 'b-384372893sd33433gr', 20, 20, 1, 'Laptop Acer 2019');
+(1, 'Laptop', 'ashiap', 10, 8, 1, 'Masih Bagus'),
+(2, 'Obeng', 'ashiap', 10, 6, 2, 'Obeng biasa'),
+(3, 'Tang', 'ashiap', 13, 2, 2, 'Tang biasa'),
+(4, 'Bor', 'ashiap', 20, 4, 2, 'Bor'),
+(5, 'CPU Komputer', 'ashiap', 35, 30, 1, 'CPU Komputer, Processor Intel i3, Ram 8GB');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_jurusan`
+--
+
+CREATE TABLE `tb_jurusan` (
+  `id_jurusan` int(11) NOT NULL,
+  `nama_jurusan` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_jurusan`
+--
+
+INSERT INTO `tb_jurusan` (`id_jurusan`, `nama_jurusan`) VALUES
+(1, 'Rekayasa Perangkat Lunak'),
+(2, 'Multimedia'),
+(3, 'Teknik Komputer dan Jaringan'),
+(4, 'Teknik Kendaraan Ringan dan Otomotif'),
+(5, 'Teknik Bisnis Sepeda Motor'),
+(6, 'Teknik Instalasi Tenaga Listrik'),
+(7, 'Teknik Pendingin dan Tata Udara'),
+(8, 'Audio Video'),
+(9, 'Permesinan'),
+(10, 'Design Permodelan dan Informasi Bangunan'),
+(11, 'Bisnis Kontruksi dan Properti');
 
 -- --------------------------------------------------------
 
@@ -70,8 +102,8 @@ CREATE TABLE `tb_siswa` (
 --
 
 INSERT INTO `tb_siswa` (`id_user`, `fullname`, `email`, `username`, `password`, `nisn`, `jurusan`, `kelas`, `gender`, `status`, `avatar`) VALUES
-('u-272445e82aed579ee0', 'I Gusti Ngurah Gana Untaran', 'ngurahganauntaran@gmail.com', 'Gana Untaran', '$2y$10$7ZBYXCpoOSY.oWzvwstUDODlKRZ86WVlUVw0atf0r2C57FtgzNdui', '27244', 'RPL', 'XI RPL 1', NULL, 1, 'default.jpg'),
 ('u-272455e7b841e1d3ee', 'i gusti putu ngurah prihandana', 'ngurahprihandana27@gmail.com', 'Ngurah Prihandana', '$2y$10$fLPiEDrB5xIyi2d3Z2wWUO.uAZ4mtHaDsZqZtlUhvYMPGBA5t18cW', '27245', 'RPL', 'XI RPL 1', NULL, 1, 'default.jpg'),
+('u-272455e82a5d0a3b7a', 'I Gusti Putu Ngurah Hans', 'prihandana27@gmail.com', 'Ngurah Hans', '$2y$10$uzlIbLBP1lgV.ewGgz1kv.T10mf0zIymSVF60l2T6swqMAiN5VVHu', '27245', 'RPL', 'XI RPL 1', NULL, 1, 'default.jpg'),
 ('u-272505e65a714021e0', 'i putu dwi payana', 'ini.dwiii@gmail.com', 'Dwi Payana', '$2y$10$twdksXsUkUkAhef16vVDe.1To.WrWWBexplxuJuT3A1ZEvzs6w4Je', '27250', 'RPL', 'XI RPL 1', NULL, 1, 'default.jpg'),
 ('u-272585e82804a983df', 'saomi novelia gunawan', 'saominvl@gmail.com', 'Novelia Gunawan', '$2y$10$M30ljdL8EInPFUSw1g6f5.XAfxh0pV2Xvn8TUStQeYB9/egw0t1IC', '27258', 'RPL', 'XI RPL 1', NULL, 1, 'default.jpg'),
 ('u-272695e827e740e4e5', 'wishnu ahmad syahputra', 'wishnuahmad@gmail.com', 'Ahmad Syahputra', '$2y$10$RuLQzH/3fwN0T/gLHH2AQuRvp4YK2CLyw83G/QHkPpJRRb3hh/Qwa', '27269', 'RPL', 'XI RPL 1', NULL, 1, 'default.jpg');
@@ -87,6 +119,12 @@ ALTER TABLE `tb_barang`
   ADD PRIMARY KEY (`id_barang`);
 
 --
+-- Indexes for table `tb_jurusan`
+--
+ALTER TABLE `tb_jurusan`
+  ADD PRIMARY KEY (`id_jurusan`);
+
+--
 -- Indexes for table `tb_siswa`
 --
 ALTER TABLE `tb_siswa`
@@ -100,7 +138,13 @@ ALTER TABLE `tb_siswa`
 -- AUTO_INCREMENT for table `tb_barang`
 --
 ALTER TABLE `tb_barang`
-  MODIFY `id_barang` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_barang` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tb_jurusan`
+--
+ALTER TABLE `tb_jurusan`
+  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
