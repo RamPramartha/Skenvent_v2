@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2020 at 02:12 AM
+-- Generation Time: Apr 08, 2020 at 02:33 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -126,6 +126,24 @@ INSERT INTO `tb_siswa` (`id_user`, `fullname`, `email`, `username`, `password`, 
 ('u-272585e82804a983df', 'saomi novelia gunawan', 'saominvl@gmail.com', 'Novelia Gunawan', '$2y$10$M30ljdL8EInPFUSw1g6f5.XAfxh0pV2Xvn8TUStQeYB9/egw0t1IC', '27258', 'RPL', 'XI RPL 1', NULL, 1, 'default.jpg'),
 ('u-272695e827e740e4e5', 'wishnu ahmad syahputra', 'wishnuahmad@gmail.com', 'Ahmad Syahputra', '$2y$10$RuLQzH/3fwN0T/gLHH2AQuRvp4YK2CLyw83G/QHkPpJRRb3hh/Qwa', '27269', 'RPL', 'XI RPL 1', NULL, 1, 'default.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_transaksi`
+--
+
+CREATE TABLE `tb_transaksi` (
+  `id_transaksi` int(20) NOT NULL,
+  `kode_type` varchar(255) NOT NULL,
+  `id_barang` int(20) NOT NULL,
+  `id_user` int(20) NOT NULL,
+  `id_guru` int(11) NOT NULL,
+  `qty_barang` int(11) NOT NULL,
+  `date_keluar` date NOT NULL,
+  `date_kembali` date NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -155,6 +173,12 @@ ALTER TABLE `tb_siswa`
   ADD PRIMARY KEY (`id_user`);
 
 --
+-- Indexes for table `tb_transaksi`
+--
+ALTER TABLE `tb_transaksi`
+  ADD PRIMARY KEY (`id_transaksi`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -175,6 +199,12 @@ ALTER TABLE `tb_guru`
 --
 ALTER TABLE `tb_jurusan`
   MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `tb_transaksi`
+--
+ALTER TABLE `tb_transaksi`
+  MODIFY `id_transaksi` int(20) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

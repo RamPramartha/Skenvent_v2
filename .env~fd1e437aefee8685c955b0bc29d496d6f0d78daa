@@ -1,0 +1,11 @@
+APPNAME=Skenvent
+
+DEF_HOMEPAGE=auth
+
+BASEURL=http://localhost/Skenvent_v2
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=
+DB_NAME=db_skenvent_v2
+CHARSET=utf8mb4
