@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 defined( "BASEPATH" ) or die( "Direct scripting is not allowed." );
 
-class User 
+class User
 {
   public function index()
   {
@@ -22,6 +22,7 @@ class User
     }
   }
 
+  // akan berufungsi ke halaman saat meminjam barang
   public function available()
   {
     if( isset( $_COOKIE["is_login"] ) ) {
@@ -30,7 +31,7 @@ class User
         $data = [
           "title" => useEnv( "APPNAME" ) . " - Available Items",
           "userdata" => DB::table( "tb_siswa" )->where("id_user", $_COOKIE["userid"] )->get(),
-          "items" => DB::table("tb_barang")->all() 
+          "items" => DB::table("tb_barang")->all()
         ];
         Controller::useViews( ["templates.header", "user.available", "templates.footer"], $data );
       } else {
