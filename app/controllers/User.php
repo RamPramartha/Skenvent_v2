@@ -22,14 +22,15 @@ class User
     }
   }
 
+  // akan berufungsi ke halaman saat meminjam barang
   public function available()
   {
     if (isset($_COOKIE["is_login"])) {
       $formvalidation = Controller::loadLibrary("FormValidation");
       if ($formvalidation->run() == false) {
         $data = [
-          "title" => useEnv("APPNAME") . " - Available Items",
-          "userdata" => DB::table("tb_siswa")->where("id_user", $_COOKIE["userid"])->get(),
+          "title" => useEnv( "APPNAME" ) . " - Available Items",
+          "userdata" => DB::table( "tb_siswa" )->where("id_user", $_COOKIE["userid"] )->get(),
           "items" => DB::table("tb_barang")->all()
         ];
         Controller::useViews(["templates.header", "user.available", "templates.footer"], $data);
